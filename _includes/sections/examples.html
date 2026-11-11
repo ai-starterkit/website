@@ -1,0 +1,25 @@
+{%- comment -%}
+  Example architectures. Each example shows its tags and facts, and its drawn diagram if it names one
+  in _includes/diagrams/. The cards below the examples (the snapshot template and the Tech station)
+  sit side by side.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign shown = s.examples | where_exp: "x", "x.show != false" -%}
+<div class="sec">{% include sec-head.html s=s %}{% if shown.size == 0 %}{{ s.body | sk_md_block }}{% endif %}
+  {%- for ex in shown %}
+  <div class="case"><div class="pic"><h3>{{ ex.title | sk_md }}</h3><div class="meta">{% for t in ex.tags %}<span>{{ t | sk_md }}</span>{% endfor %}</div>{% if ex.diagram %}<div class="scrollx">{% include diagrams/{{ ex.diagram }}.html %}</div>{% endif %}</div><dl class="facts">{% for fact in ex.facts %}<div><dt>{{ fact.term | sk_md }}</dt><dd>{{ fact.text | sk_md }}</dd></div>{% endfor %}</dl></div>
+  {%- endfor %}
+  <div class="grid g2" style="align-items:start">
+  {%- for c in s.cards -%}
+    {%- unless c.show == false -%}
+    {%- assign url = c.link | sk_link -%}
+    {%- capture inner %}{% if c.tag %}<span class="tag">{{ c.tag | sk_md }}</span>{% endif %}<h3>{{ c.heading | sk_md }}</h3>{{ c.body | sk_md_block }}{% if c.fields.size > 0 %}<ol class="fields">{% for li in c.fields %}<li>{{ li | sk_md }}</li>{% endfor %}</ol>{% endif %}{% if c.button %}<span class="go">{{ c.button | sk_md }}</span>{% endif %}{% endcapture %}
+    {%- if url != "" %}
+    <a class="card" href="{{ url }}"{{ url | sk_target }}>{{ inner }}</a>
+    {%- else %}
+    <div class="card">{{ inner }}</div>
+    {%- endif -%}
+    {%- endunless -%}
+  {%- endfor %}
+  </div>
+</div>

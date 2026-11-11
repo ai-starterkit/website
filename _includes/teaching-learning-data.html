@@ -1,0 +1,50 @@
+{%- comment -%}
+  Everything the interactive parts of the Teaching & Learning page need, handed to
+  assets/teaching-learning.js as JSON. Built from _data/teaching_learning.yml and _library/.
+{%- endcomment -%}
+{%- assign T = site.data.teaching_learning -%}
+{%- assign fw = T.framework -%}
+{%- assign tr = T.try_it -%}
+{%- assign lb = T.library -%}
+{%- assign in_page = page.sections | map: "id" -%}
+{%- assign part_keys = "" -%}
+{%- for p in fw.parts limit: 4 %}{% assign k = p.short_name | default: p.name | slugify %}{% assign part_keys = part_keys | append: k | append: "|" %}{% endfor -%}
+{%- assign part_keys = part_keys | split: "|" -%}
+{%- capture json -%}
+{"labels":{
+"progress":{{ fw.progress | sk_plain | jsonify }},"progressDone":{{ fw.progress_complete | sk_plain | jsonify }},
+"helps":{{ fw.where_ai_helps_label | sk_plain | jsonify }},"science":{{ fw.science_label | sk_plain | jsonify }},
+"uses":{{ fw.uses_label | sk_plain | jsonify }},"next":{{ fw.next_label | sk_plain | jsonify }},
+"copied":{{ tr.copied_message | sk_plain | jsonify }},
+"copyPrompt":{{ lb.copy_prompt_button | sk_plain | jsonify }},"copySkill":{{ lb.copy_skill_button | sk_plain | jsonify }},
+"promptType":{{ lb.prompt_label | sk_plain | jsonify }},"skillType":{{ lb.skill_label | sk_plain | jsonify }},
+"libCopied":{{ lb.copied_message | sk_plain | jsonify }},"empty":{{ lb.empty_message | sk_plain | jsonify }},
+"skillIntro":{{ lb.skill_copy_intro | sk_plain | jsonify }}},
+"parts":[
+{%- for p in fw.parts limit: 4 -%}
+{"key":{{ p.short_name | default: p.name | slugify | jsonify }},"short":{{ p.short_name | default: p.name | sk_plain | jsonify }},"name":{{ p.name | sk_plain | jsonify }},"num":{{ p.number | sk_plain | jsonify }},"q":{{ p.question | sk_plain | jsonify }},
+"ai":[{% for x in p.where_ai_helps %}{{ x | sk_plain | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+"sci":{{ p.learning_science | sk_plain | jsonify }},
+"uses":[{% for u in p.use_on_this_page -%}
+  {%- if in_page contains u.link -%}{% capture href %}#{{ page.anchor_prefix }}{{ u.link }}{% endcapture %}{% else %}{% assign href = u.link | sk_link %}{% endif -%}
+  {"label":{{ u.label | sk_plain | jsonify }},"href":{{ href | jsonify }},"ext":{% if href contains "http://" or href contains "https://" %}true{% else %}false{% endif %},"filter":{% if u.link == "library" %}true{% else %}false{% endif %}}{% unless forloop.last %},{% endunless %}
+{%- endfor %}],
+"loop":{% if forloop.index == 4 %}true{% else %}false{% endif %}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+],
+"comparisons":[
+{%- for c in T.comparison.tabs -%}
+{"tab":{{ c.name | sk_plain | jsonify }},"q":{{ c.request | sk_plain | jsonify }},"a":{{ c.general_answer | sk_md_block | jsonify }},"aw":{{ c.missing | sk_plain | jsonify }},"b":{{ c.companion_answer | sk_md_block | jsonify }},"bw":{{ c.aligned | sk_plain | jsonify }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+],
+"library":[
+{%- assign entries = site.library | where_exp: "x", "x.show != false" | sort: "order" -%}
+{%- for e in entries -%}
+{%- assign n = e.part | slugify -%}{%- unless part_keys contains n %}{% assign n = "" %}{% endunless -%}
+{"t":{% if e.kind == "skill" %}"skill"{% else %}"prompt"{% endif %},"n":{{ n | jsonify }},"h":{{ e.title | sk_plain | jsonify }},"d":{{ e.description | sk_plain | jsonify }},
+"body":{% if e.kind == "skill" %}""{% else %}{{ e.prompt | jsonify }}{% endif %},
+"steps":[{% if e.kind == "skill" %}{% for st in e.steps %}{{ st | sk_plain | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}]}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]}
+{%- endcapture -%}
+<script type="application/json" id="tl-data">{{ json | replace: "<", "<" }}</script>

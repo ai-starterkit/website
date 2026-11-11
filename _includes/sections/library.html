@@ -1,0 +1,21 @@
+{%- comment -%}
+  Teaching & Learning: the Prompt & Skill Library. Labels come from _data/teaching_learning.yml
+  (library); the entries are files in _library/, drawn by assets/teaching-learning.js.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign lb = site.data.teaching_learning.library -%}
+{%- assign parts = site.data.teaching_learning.framework.parts -%}
+<div class="sec" id="{{ page.anchor_prefix }}{{ s.id }}">{% include sec-head.html s=lb %}
+  <div class="ready">
+    <div><h3>{{ lb.guide_heading | sk_md }}</h3><ol>{% for st in lb.guide_steps %}<li>{{ st | sk_md }}</li>{% endfor %}</ol></div>
+    <dl>
+      <div><dt class="p">{{ lb.prompt_label | sk_md }}</dt><dd>{{ lb.prompt_definition | sk_md }}</dd></div>
+      <div><dt class="s">{{ lb.skill_label | sk_md }}</dt><dd>{{ lb.skill_definition | sk_md }}</dd></div>
+    </dl>
+  </div>
+  <div class="lib-bar">
+    <div class="grp" role="group" aria-label="Filter by framework part"><span class="lab">{{ lb.part_filter_label | sk_md }}</span><button class="chip" type="button" data-f="all" aria-pressed="true">{{ lb.all_filter | sk_md }}</button>{% for p in parts limit: 4 %}<button class="chip" type="button" data-f="{{ p.short_name | default: p.name | slugify }}" aria-pressed="false">{{ p.short_name | default: p.name | sk_plain | escape }}</button>{% endfor %}</div>
+    <div class="grp" role="group" aria-label="Filter by type"><span class="lab">{{ lb.type_filter_label | sk_md }}</span><button class="chip" type="button" data-t="all" aria-pressed="true">{{ lb.all_filter | sk_md }}</button><button class="chip" type="button" data-t="prompt" aria-pressed="false">{{ lb.prompts_filter | sk_md }}</button><button class="chip" type="button" data-t="skill" aria-pressed="false">{{ lb.skills_filter | sk_md }}</button></div>
+  </div>
+  <div class="lib" id="lib"></div>
+</div>

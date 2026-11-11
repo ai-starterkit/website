@@ -1,0 +1,10 @@
+{%- comment -%} A resource card from _resources/. Parameters: card, button (the section's default label). {%- endcomment -%}
+{%- assign c = include.card -%}
+{%- assign c_url = c.link | sk_link -%}
+<a class="card src-card" href="{{ c_url }}"{{ c_url | sk_target }}>
+  {%- if c.tag %}<span class="tag">{{ c.tag | sk_md }}</span>{% endif -%}
+  <h3>{{ c.title | sk_md }}</h3>
+  {%- if c.publisher %}<span class="pub">{{ c.publisher | sk_md }}</span>{% endif -%}
+  {{ c.content | strip | sk_links }}
+  {%- if c.license %}<span class="acc">{{ c.license | sk_md }}</span>{% endif -%}
+  <span class="go">{{ c.button | default: include.button | sk_md }}</span></a>

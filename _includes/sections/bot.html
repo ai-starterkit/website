@@ -1,0 +1,22 @@
+{%- comment -%}
+  A bot: heading, credit, paragraphs, optional numbered steps and a list of outputs. With a button it
+  links to the bot (switched off while the link is blank); without one it shows a chat mock-up.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+<div class="sec">{% include sec-head.html s=s %}{% if s.credit %}<span class="credit">{{ s.credit | sk_md }}</span>{% endif %}{{ s.body | sk_md_block }}
+  {%- if s.steps.size > 0 %}
+  <div class="steps">{% for st in s.steps %}<div class="step"><span class="n">{{ st.title | sk_md }}</span><p>{{ st.text | sk_md }}</p></div>{% endfor %}</div>
+  {%- endif -%}
+  {%- if s.outputs.size > 0 %}
+  <div class="outs"><h3>{{ s.outputs_heading | sk_md }}</h3><ul>{% for li in s.outputs %}<li>{{ li | sk_md }}</li>{% endfor %}</ul></div>
+  {%- endif -%}
+  {%- if s.button -%}
+  <div class="row">{% include button.html label=s.button link=s.link class="btn" %}</div>
+  {%- else %}
+  <div class="bot">
+  <div class="bot-top"><b>{{ s.bot_name | sk_md }}</b>{% if s.bot_badge %}<span class="pill">{{ s.bot_badge | sk_md }}</span>{% endif %}</div>
+  <div class="bot-body"><div class="msg">{{ s.bot_greeting | sk_md }}</div>{% if s.example_prompt %}<div class="chips"><button class="chip" type="button">{{ s.example_prompt | sk_md }}</button></div>{% endif %}</div>
+  <div class="bot-in"><input id="{{ s.id }}-in" type="text" placeholder="{{ s.input_placeholder | sk_plain | escape }}" aria-label="Message the {{ s.bot_name | sk_plain | escape }}"><button class="ibtn" type="button">Upload</button><button class="ibtn go2" type="button">Send</button></div>
+  </div>
+  {%- endif -%}
+</div>

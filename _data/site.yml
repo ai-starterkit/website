@@ -1,0 +1,49 @@
+# Site-wide words: the site name, the footer, the menu and the contact form.
+# Each menu entry names a page by its ID (its file name in _pages/) and gives the label shown in the menu.
+# The contact form opens the visitor's email app addressed to send_to until a form service is chosen.
+
+name: AI Starter Kit
+footer:
+  text: AI Starter Kit tools are openly licensed; linked resources keep their own licenses
+  link_text: Contact & Feedback
+  link: contact
+menu:
+  - page: home
+    label: Home
+  - page: readiness
+    label: AI Maturity Assessment
+  - page: policy
+    label: Policy
+  - page: architecture
+    label: Technology Architecture
+  - page: teaching-learning
+    label: Teaching & Learning
+  - page: advising
+    label: AI Advising
+  - page: ai-in-practice
+    label: AI in Practice
+  - page: about
+    label: About
+  - page: contact
+    label: Contact & Feedback
+contact_form:
+  send_to: ai@axim.org
+  name_label: Name
+  email_label: Email
+  institution_label: Institution or organization
+  topic_label: Topic
+  message_label: Message
+  contact_checkbox: Please contact me about this
+  updates_checkbox: Send me updates on the AI Starter Kit
+  button: Send
+  after_sending: Your email app should open with your message ready to send. If it doesn't, write to us at ai@axim.org.
+  topics:
+    - General feedback
+    - Suggest a resource
+    - Share a use case
+    - Policy
+    - Technology architecture
+    - Maturity assessment
+    - Teaching and learning Innovation
+    - AI advising
+    - Getting involved

@@ -1,0 +1,49 @@
+# Once a week, checks every link to another website (the resource cards above all) and opens an
+# issue listing any that have died or moved. It never blocks publishing.
+name: Weekly link check
+
+on:
+  schedule:
+    - cron: "17 13 * * 1"   # Mondays, 13:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'ai-starterkit'
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - uses: ruby/setup-ruby@a5612086821ed5ff914a94f49c9e4e6ee039fb72 # v1.337.0
+        with:
+          bundler-cache: true
+
+      - name: Build the site
+        run: bundle exec jekyll build
+
+      - name: Check links to other websites
+        id: lychee
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+        with:
+          args: >-
+            --no-progress
+            --root-dir ${{ github.workspace }}/_site
+            --scheme https --scheme http
+            --exclude-all-private
+            --max-retries 3
+            --accept 200..=299,403,429
+            './_site/**/*.html'
+          output: ./lychee-report.md
+          fail: false
+
+      - name: Open an issue if any links are broken
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@e8ef132d6df98ed982188e460ebb3b5d4ef3a9cd # v5.0.1
+        with:
+          title: Broken links on the website
+          content-filepath: ./lychee-report.md
+          labels: links
