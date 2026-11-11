@@ -1,0 +1,192 @@
+# Every word in the interactive parts of the Teaching & Learning page: the framework model,
+# "Try it on a real task", the comparison and the Prompt & Skill Library labels.
+# The library entries themselves are files in _library/.
+#
+# The framework always has four parts, in this order: the three corners of the triangle, then the
+# improvement loop. short_name is the label used in the library filters and on task cards, and the
+# "part" of every task and library entry must match one of them.
+# In use_on_this_page, a link to try-it, library, learn-more or resources jumps to that part of the
+# page; library also filters the library to this part. Placeholders {n} and {total} are filled in.
+
+framework:
+  heading: "The framework: align, then improve"
+  subheading: "A well-designed course keeps three things aligned: what students should learn, how you'll know they learned it, and how they practice. Then it uses evidence to keep getting better."
+  hint: "Interactive: click each part of the model to see where AI helps"
+  progress: "{n} of {total} explored"
+  progress_complete: All {total} explored
+  center_label: Learning
+  center_sublabel: BACKWARD DESIGN
+  edge_label: ALIGNED
+  where_ai_helps_label: Where AI helps
+  science_label: The learning science
+  uses_label: Use on this page
+  next_label: "Next:"
+  footnote: Grounded in backward design (Wiggins & McTighe), constructive alignment (Biggs) and the learning engineering approach behind CMU's Open Learning Initiative.
+  parts:
+    - name: Outcomes
+      number: "01"
+      short_name: Outcomes
+      question: What should students be able to do by the end?
+      where_ai_helps:
+        - Turn a topic into objectives you can assess
+        - Flag vague verbs like “understand”
+        - Break an objective into the skills it needs
+      learning_science: Backward design starts from the evidence of learning you want, then works back to activities.
+      use_on_this_page:
+        - label: "Try it: rewrite my objectives"
+          link: try-it
+        - label: AI for Learning · Module 1
+          link: https://oli.cmu.edu/courses/ai-for-learning/
+        - label: "Library: Outcomes"
+          link: library
+    - name: Assessment
+      number: "02"
+      short_name: Assessment
+      question: How will you know they learned it?
+      where_ai_helps:
+        - Draft practice questions tied to one objective
+        - Write wrong answers from real misconceptions
+        - Check whether an assignment still works when students use AI
+        - Draft targeted feedback for each answer
+      learning_science: Practice with feedback is where most learning happens. An assessment should measure the objective, not the student's access to AI.
+      use_on_this_page:
+        - label: "Try it: check my assignment"
+          link: try-it
+        - label: AI for Learning · Module 2
+          link: https://oli.cmu.edu/courses/ai-for-learning/
+        - label: Academic Integrity guide
+          link: resources
+        - label: "Library: Assessment"
+          link: library
+    - name: Instruction
+      number: "03"
+      short_name: Instruction
+      question: How will students practice and learn?
+      where_ai_helps:
+        - Build worked examples and practice sequences
+        - Explain one idea at several levels
+        - Design course chatbots that coach instead of answering
+      learning_science: Students learn by doing. Activities should give practice on the objective, not just more to read.
+      use_on_this_page:
+        - label: "Try it: design an activity"
+          link: try-it
+        - label: AI for Learning · Module 3
+          link: https://oli.cmu.edu/courses/ai-for-learning/
+        - label: "Library: Instruction"
+          link: library
+    - name: Measure & improve
+      number: "04 · Loop"
+      short_name: Improve
+      question: Is it working, and what should change?
+      where_ai_helps:
+        - Summarize quiz and activity results
+        - Spot the questions most students miss
+        - Suggest revisions, then check them against the objective
+      learning_science: "Learning engineering: design, collect evidence of learning, revise, and repeat. This is how OLI courses improve over time."
+      use_on_this_page:
+        - label: "Library: Improve"
+          link: library
+        - label: AI for Teaching and Learning Institute
+          link: learn-more
+try_it:
+  heading: Try it on a real task
+  subheading: The AI for Learning Companion is a chatbot built on this framework. Pick the situation that sounds most like yours, copy the starter prompt, and paste it into the companion.
+  steps:
+    - Copy the prompt
+    - Open the companion
+    - Paste, then fill in the [brackets] with your course
+  prompt_label: Starter prompt
+  result_label: You'll get
+  copy_button: Copy prompt
+  open_button: Open the companion ↗
+  companion_link: https://www.playlab.ai/project/cm9k4yjyu07phoeihrffm3qi7
+  copied_message: Copied. Now open the companion.
+  tasks:
+    - quote: “My syllabus says students will ‘understand’ the material. How would I even know if they do?”
+      part: Outcomes
+      prompt: |-
+        I teach [course] to [who your students are]. Here are my current learning objectives: [paste them].
+        Rewrite each one so it names something students can do that I could see or assess. For each, tell me what student work would show they've met it.
+      you_get: objectives you can actually assess, and a first idea of how to assess each one.
+    - quote: “Students can hand in a polished essay in minutes with AI. I can't tell what they actually learned.”
+      part: Assessment
+      prompt: |-
+        Here is an assignment I give: [paste it]. Its goal is for students to [what they should be able to do].
+        If a student uses AI on it, what would the result still show about their learning, and what wouldn't it? Suggest one revision that keeps the goal but asks students to show their own thinking.
+      you_get: an honest check on the assignment and one revision you could use this term.
+    - quote: “Students do the reading, but on the test they still can't apply the idea to a new problem.”
+      part: Instruction
+      prompt: |-
+        My students read about [topic] but can't apply it to new problems. I want them to be able to [goal].
+        Design a 15-minute class activity: one worked example that shows each step, one practice problem for students to try, and feedback for the most common mistake.
+      you_get: a short activity that gives students practice, not just more to read.
+comparison:
+  heading: How is this different from a general chatbot?
+  summary: See the same request answered both ways
+  request_label: Request
+  general_label: General-purpose chatbot
+  companion_label: AI for Learning Companion
+  missing_label: Missing
+  aligned_label: Aligned
+  footnote: Illustrative examples that show the pattern. The companion starts from what students should learn.
+  tabs:
+    - name: Outcomes
+      request: Write learning objectives for my intro statistics course.
+      general_answer: |-
+        - Understand mean, median and mode
+        - Appreciate the role of statistics in everyday life
+        - Learn about probability
+        - Know how to read graphs
+      missing: “Understand” and “appreciate” can't be observed, so they can't be assessed.
+      companion_answer: |-
+        A few questions first: who are your students, and what should they be able to do in their next course or job?
+
+        Here’s a start you can check against that:
+
+        - Choose a measure of center for a data set and justify the choice.
+        - Identify when a graph misrepresents data, and explain why.
+
+        Each one names something students do, so we can write an assessment for it next.
+      aligned: Objectives name observable actions, ready to assess.
+    - name: Assessment
+      request: Write five quiz questions for my unit on supply and demand.
+      general_answer: |-
+        - What is the law of demand?
+        - Define equilibrium price.
+        - What is a surplus?
+        - What shifts the supply curve?
+        - Define elasticity.
+      missing: Recall only, with no link to an objective and no feedback.
+      companion_answer: |-
+        What’s the objective for this unit? For example: *predict how a change in price or income affects the market*.
+
+        If that’s it, I’ll write questions that ask students to apply it to new cases. Wrong answers will come from a common mix-up, confusing a shift of the curve with a movement along it, and each one will get feedback that explains the mix-up.
+      aligned: Questions measure the objective, and the feedback teaches.
+    - name: Instruction
+      request: Explain photosynthesis for my students.
+      general_answer: Photosynthesis is how plants use sunlight, water and carbon dioxide to make glucose and oxygen. It has two stages…
+      missing: More to read, but no practice.
+      companion_answer: What should students do with this? I’d suggest a worked example, then a prediction question (what happens if light drops?), then feedback on each answer.
+      aligned: Instruction gives practice with feedback.
+library:
+  heading: Prompt & Skill Library
+  subheading: Ready to go further? More prompts and skills for each part of the framework, to use in whatever AI tool your institution supports.
+  guide_heading: New to prompts? Here's how to use this library
+  guide_steps:
+    - Pick the part of your course you're working on, using the filters below.
+    - Copy a prompt or a skill.
+    - Paste it into an AI tool, such as the companion above or the one your campus provides, and replace the [brackets] with your course details.
+  prompt_label: Prompt
+  prompt_definition: One request for one task, like rewriting your objectives. Paste it, get an answer.
+  skill_label: Skill
+  skill_definition: A set of steps the AI follows every time, like reviewing a whole quiz. Paste it at the start of a chat, or save it as custom instructions, and reuse it.
+  part_filter_label: Part
+  type_filter_label: Type
+  all_filter: All
+  prompts_filter: Prompts
+  skills_filter: Skills
+  copy_prompt_button: Copy prompt
+  copy_skill_button: Copy skill
+  copied_message: Copied
+  empty_message: No items for this filter yet.
+  skill_copy_intro: Follow these steps every time I share my course materials in this chat.

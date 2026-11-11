@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{%- comment -%}
+  A page is its list of sections, rendered in order. Each section type has a template in
+  _includes/sections/<type>.html. A section with "show: false" stays in the file but is not shown.
+{%- endcomment -%}
+{%- assign types = page.sections | map: "type" -%}
+{%- if types contains "use_cases" %}<div id="uc-index">
+{% endif -%}
+{%- for entry in page.sections %}
+{% include section.html s=entry %}
+{%- endfor %}
+{%- if types contains "use_cases" %}
+</div>{% endif %}
+{%- if types contains "framework" or types contains "try_it" or types contains "library" %}
+{% include teaching-learning-data.html %}
+{%- endif %}

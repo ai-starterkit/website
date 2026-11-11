@@ -1,0 +1,15 @@
+{%- comment -%}
+  The contact form. Its words are in _data/site.yml (contact_form). Until a form service is chosen,
+  assets/site.js opens the visitor's email app addressed to send_to.
+{%- endcomment -%}
+{%- assign fm = site.data.site.contact_form -%}
+<form class="cform" id="cf" data-to="{{ fm.send_to | escape }}" data-done="{{ fm.after_sending | sk_plain | escape }}">
+  <label>{{ fm.name_label | sk_md }}<input id="cf-name" name="name" type="text" autocomplete="name"></label>
+  <label>{{ fm.email_label | sk_md }}<input id="cf-email" name="email" type="email" autocomplete="email"></label>
+  <label>{{ fm.institution_label | sk_md }}<input id="cf-inst" name="institution" type="text"></label>
+  <label>{{ fm.topic_label | sk_md }}<select id="cf-topic" name="topic">{% for o in fm.topics %}<option>{{ o | sk_md }}</option>{% endfor %}</select></label>
+  <label class="full">{{ fm.message_label | sk_md }}<textarea id="cf-msg" name="message" rows="4"></textarea></label>
+  <label class="check full"><input id="cf-contact" type="checkbox" checked> {{ fm.contact_checkbox | sk_md }}</label>
+  <label class="check full"><input id="cf-upd" type="checkbox"> {{ fm.updates_checkbox | sk_md }}</label>
+  <div class="full row"><button class="btn" type="submit">{{ fm.button | sk_md }}</button><span id="cf-msgout" class="muted small" aria-live="polite"></span></div>
+</form>

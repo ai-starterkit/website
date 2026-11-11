@@ -1,0 +1,79 @@
+# Site settings. Maintainers only: content owners edit _pages/, _resources/, _library/ and _data/.
+
+title: AI Starter Kit
+url: https://ai-starterkit.org
+# The site is served from the domain root. Pull request previews build with --baseurl /pr-preview/pr-<number>.
+baseurl: ""
+
+# Pages live in _pages/; a page's file name is its ID and its web address (policy.md -> /policy/).
+include:
+  - _pages
+
+collections:
+  resources:      # resource cards: one file each, placed by page, section and order
+    output: false
+  library:        # Prompt & Skill Library entries on the Teaching & Learning page
+    output: false
+  case_studies:   # full case studies on the AI Maturity Assessment page
+    output: false
+  use_cases:      # Digital Education Council use cases, reproduced as published
+    output: true
+    permalink: /ai-in-practice/:name/
+
+defaults:
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+      permalink: /:basename/
+  - scope:
+      type: use_cases
+    values:
+      layout: use_case
+      nav_page: ai-in-practice
+  - scope:
+      type: resources
+    values:
+      render_with_liquid: false
+  - scope:
+      type: library
+    values:
+      render_with_liquid: false
+  - scope:
+      type: case_studies
+    values:
+      render_with_liquid: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: false
+  # Keep quotes, dashes and ellipses exactly as typed.
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  typographic_symbols:
+    hellip: "..."
+    mdash: "---"
+    ndash: "--"
+    laquo: "<<"
+    raquo: ">>"
+    laquo_space: "<< "
+    raquo_space: " >>"
+
+# Fail the build on Liquid mistakes instead of rendering a broken page.
+liquid:
+  error_mode: strict
+  strict_filters: true
+
+exclude:
+  - README.md
+  - LICENSE
+  - AGENTS.md
+  - CLAUDE.md
+  - CONTRIBUTING.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/
+  - .github/
+  - .jekyll-cache/

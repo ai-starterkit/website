@@ -1,0 +1,7 @@
+{%- comment -%} The license key under the assessment cards: a label, a line of text and a list of terms. {%- endcomment -%}
+{%- assign s = include.s -%}
+<div class="lic"><span class="lbl">{{ s.label | sk_md }}</span>{{ s.body | sk_md_block }}<dl>
+  {%- for t in s.terms -%}
+  <div{% if t.term.size > 4 %} class="wide"{% endif %}><dt>{{ t.term | sk_md }}</dt><dd>{{ t.text | sk_md }}</dd></div>
+  {%- endfor -%}
+</dl></div>

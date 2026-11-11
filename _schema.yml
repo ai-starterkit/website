@@ -1,0 +1,106 @@
+# The content schema: which fields each kind of content may have, and which it must have.
+# _plugins/starterkit.rb checks every content file against it before the site is built. A missing
+# required field, an unknown field (a misspelled "buton:", say), a link that points nowhere or a
+# card placed in a section that does not exist stops the build with a message naming the file.
+#
+# Maintainers only. Adding a field here does not make it appear on the site: the template for that
+# section type (_includes/sections/<type>.html) has to use it too.
+
+# Front matter of a page in _pages/.
+page:
+  fields: [browser_title, description, sections, permalink, anchor_prefix]
+  required: [browser_title, description, sections]
+
+# Every section may have these.
+section_common: [type, id, show, on_this_page]
+
+# Section types. "lists" are fields that hold a list of entries, with the fields each entry may have.
+sections:
+  hero:
+    fields: [kicker, badge, heading, lead, body, credit, share_label, share_text, on_this_page_label, box_label, box_text, parts]
+    required: [heading]
+  text:
+    fields: [heading, subheading, badge, body, points, source, link_text, link, style]
+    styles: [plain]
+  cards:
+    fields: [heading, subheading, body, kicker, button, columns, style, items, parts]
+    required: [style]
+    styles:
+      kit: { items: { fields: [title, badge, text, button, link, show], required: [title, link] } }
+      criteria: { items: { fields: [title, text, show], required: [title] } }
+      timeline: { items: { fields: [title, text, show], required: [title] } }
+      split: { items: { fields: [title, body, points, show], required: [title] } }
+      learn: { items: { fields: [title, label, details, text, link_text, link, show], required: [title] } }
+      community: { items: { fields: [title, tag, text, button, link, show], required: [title, link] } }
+      source: { resources: true }    # cards come from _resources/
+      context: { resources: true }
+      resource: { resources: true }
+  bot:
+    fields: [heading, subheading, credit, body, steps, outputs_heading, outputs, button, link, bot_name, bot_badge, bot_greeting, example_prompt, input_placeholder]
+    lists:
+      steps: { fields: [title, text], required: [title] }
+  callout:
+    fields: [label, heading, body]
+    required: [heading]
+  cta:
+    fields: [kicker, heading, body, button, link, points, style]
+    required: [heading, button, style]
+    styles: [join, band, panel]
+  form:
+    fields: []
+  license_key:
+    fields: [label, body, terms]
+    lists:
+      terms: { fields: [term, text], required: [term] }
+  examples:
+    fields: [heading, subheading, body, examples, cards]
+    lists:
+      examples: { fields: [title, show, tags, diagram, facts], required: [title] }
+      cards: { fields: [id, show, tag, heading, body, fields, button, link], required: [heading] }
+  case_studies:
+    fields: [heading, subheading, fallback]
+    lists:
+      fallback: { fields: [title, text], required: [title] }
+  use_cases:
+    fields: [heading, subheading]
+  partners:
+    fields: [heading, subheading, body, photo, photo_caption, photo_description, kicker, logos]
+    lists:
+      logos: { fields: [image, wordmark, name], required: [name] }
+  framework:   # words in _data/teaching_learning.yml
+    fields: []
+  try_it:
+    fields: []
+  library:
+    fields: []
+
+# Front matter of the files in each collection.
+resources:
+  fields: [title, page, section, order, tag, publisher, license, link, button, part_tag, show]
+  required: [title, page, section, order]
+library:
+  fields: [title, kind, part, order, description, prompt, steps, show]
+  required: [title, kind, part, order]
+case_studies:
+  fields: [title, kicker, show]
+  required: [title]
+use_cases:
+  fields: [title]
+  required: [title]
+
+# _data files.
+site:
+  fields: [name, footer, menu, contact_form]
+  required: [name, footer, menu, contact_form]
+  footer: [text, link_text, link]
+  menu: [page, label]
+  contact_form: [send_to, name_label, email_label, institution_label, topic_label, message_label, contact_checkbox, updates_checkbox, button, after_sending, topics]
+teaching_learning:
+  fields: [framework, try_it, comparison, library]
+  framework: [heading, subheading, hint, progress, progress_complete, center_label, center_sublabel, edge_label, where_ai_helps_label, science_label, uses_label, next_label, footnote, parts]
+  framework_parts: [name, number, short_name, question, where_ai_helps, learning_science, use_on_this_page]
+  try_it: [heading, subheading, steps, prompt_label, result_label, copy_button, open_button, companion_link, copied_message, tasks]
+  tasks: [quote, part, prompt, you_get]
+  comparison: [heading, summary, request_label, general_label, companion_label, missing_label, aligned_label, footnote, tabs]
+  tabs: [name, request, general_answer, missing, companion_answer, aligned]
+  library: [heading, subheading, guide_heading, guide_steps, prompt_label, prompt_definition, skill_label, skill_definition, part_filter_label, type_filter_label, all_filter, prompts_filter, skills_filter, copy_prompt_button, copy_skill_button, copied_message, empty_message, skill_copy_intro]

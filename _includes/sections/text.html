@@ -1,0 +1,17 @@
+{%- comment -%}
+  A heading with paragraphs, and optionally a badge, a bulleted list (points), a source note and a
+  "more" link. style: plain shows the paragraphs alone, without a section box.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- if s.style == "plain" -%}
+{{ s.body | sk_md_block }}
+{%- else -%}
+<div class="sec">
+  {%- if s.badge %}<span class="soon-pill">{{ s.badge | sk_md }}</span>{% endif -%}
+  {%- include sec-head.html s=s -%}
+  {{ s.body | sk_md_block }}
+  {%- if s.points.size > 0 %}<ul class="plain">{% for li in s.points %}<li>{{ li | sk_md }}</li>{% endfor %}</ul>{% endif -%}
+  {%- if s.source %}<p class="src-note">{{ s.source | sk_md }}</p>{% endif -%}
+  {%- if s.link_text %}{% assign more_url = s.link | sk_link %}<p><a class="more" href="{{ more_url }}"{{ more_url | sk_target }}>{{ s.link_text | sk_md }}</a></p>{% endif -%}
+</div>
+{%- endif -%}
