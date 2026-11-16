@@ -7,13 +7,22 @@ sections:
   - type: hero
     heading: AI Maturity Assessment
     lead: To understand how ready your institution is to use AI, look at your technical capabilities and at how prepared people are to change the way they work.
-    body: Start with what you want to improve for students and how you will measure success, including when you are improving operations behind the scenes. Involve colleagues across campus, with support from your leadership, and keep in mind that people in different roles may need different preparation. Check whether you can access reliable data securely and connect the systems you need. Finish with concrete next steps, whether you can begin a project now or need to address gaps first. Below, you can assess your college, university or system as a whole, or look closely at a particular area or proposed project.
+    body: An assessment gives your leadership team a shared picture of where your institution stands, so you can decide where to start and explain why. Below you can assess your institution as a whole or look closely at one area or proposed project.
+  - type: text
+    id: what-to-do-first
+    heading: What should I do first?
+    points:
+      - Decide what you want to improve for students and how you will measure success, including when you are improving operations behind the scenes.
+      - Bring in faculty, staff and students from across campus early, with support from your leadership. People in different roles may need different preparation.
+      - Choose one assessment below. Compare how long it takes and whether it covers the whole institution or one area.
+      - Check whether you can access reliable data securely and connect the systems you need.
+      - Finish with concrete next steps, whether you can begin a project now or need to address gaps first.
   - type: cards
     id: assess-overall
     style: source
     columns: 3
     heading: Assess your institution overall
-    body: These are a small set of openly accessible assessments, chosen with broad-access institutions in mind. Use them to look at readiness across departments and decide where to focus. When comparing options, consider how the developers tested their approach and how much time your team would need to complete it. Look for practical guidance on involving colleagues and turning findings into an institutional plan, and check the permissions before adapting any materials.
+    body: These are a small set of openly accessible assessments, chosen with broad-access institutions in mind. Use them to look at readiness across departments and decide where to focus.
     button: Visit ↗
     parts:
       - type: license_key
@@ -36,20 +45,18 @@ sections:
         style: context
         kicker: For context
         button: Visit ↗
-      - type: callout
-        id: input-from-the-group
-        show: false
-        label: Input from the group
-        heading: Do you know an institution that has used an AI maturity assessment successfully?
-        body: We'd like to feature assessments that have worked in practice and, where we can, share the story as a case study. Tell us which institution, which assessment they used and what made it work.
   - type: text
     id: specific-area-or-project
     heading: Examine a specific area or project
     body: "You may already know where you might use AI and want a closer look at what it would take. In teaching and learning, for example, you could check how prepared instructors are to use AI in their courses and what support they still need. You could also add a readiness check to your project management office's approval process: does the proposed project need AI, and what must be in place before it goes ahead? This section will collect resources for these focused reviews."
+  - type: text
+    id: trust
+    heading: Can I trust this?
+    body: Every assessment here is openly accessible, and each card names its publisher, license and year. The AI Maturity Assessment working group chooses them for broad-access institutions, looking at how each was tested and how much time it asks of your team. Partners including UNCF, Ed Advancement and SRI are developing further assessments, which we will add as they become available. Last reviewed November 2026.
   - type: case_studies
     id: case-studies
-    heading: Case studies
-    subheading: How institutions are building their readiness for AI.
+    heading: Who has already done it?
+    subheading: Institutions in the AI Starter Kit Implementation Pilot are completing a readiness assessment this winter, and we will share what they learn here.
     fallback:
       - title: Where they started
         text: Institution type, size, and what was already in place.
@@ -57,6 +64,11 @@ sections:
         text: The first three steps, and why those came first.
       - title: What changed
         text: Results so far, and what they would do differently.
+  - type: callout
+    id: input-from-the-group
+    label: Input from the group
+    heading: Do you know an institution that has used an AI maturity assessment successfully?
+    body: We'd like to feature assessments that have worked in practice and, where we can, share the story as a case study. Tell us which institution, which assessment they used and what made it work.
   - type: cta
     id: join
     style: join

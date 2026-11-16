@@ -7,11 +7,20 @@ sections:
   - type: hero
     heading: Technology Architecture
     lead: What enterprise AI stacks could look like for broad-access institutions, such as community colleges and HBCUs, with templates and tools that make them attainable for institutions with limited technical capacity.
+    body: Most institutions already pay for systems with AI built in, and new tools arrive constantly. Planning your architecture first helps you choose what fits your problems, budget and team, and avoid being locked in to one vendor.
+  - type: text
+    id: what-to-do-first
+    heading: What should I do first?
+    points:
+      - Name two or three problems you want AI to help solve, such as slow answers to common student questions or hours spent on manual data entry.
+      - List what you run today, including AI features already built into products you use, and gather any diagrams or documentation.
+      - Request access to the Architecture Bot and describe your problems and environment.
+      - Review the options it suggests with your IT team and the people who will use the solution.
   - type: bot
     id: architecture-bot
     heading: Architecture Bot
     credit: Developed with Ed Advancement and a working group of campus technology leaders
-    body: In the near term, the working group is defining the reference materials, intake questions and decision criteria behind an advisory bot that helps institutional IT teams translate AI use cases into candidate early architectures. It will help institutions in the AI Starter Kit Implementation Pilot gain experience building and deploying AI solutions.
+    body: The Architecture Bot helps institutional IT teams turn AI use cases into candidate early architectures. A working version is being tested now, and an improved version will be ready for institutions in the AI Starter Kit Implementation Pilot in early 2027.
     steps:
       - title: Step 1 · Describe
         text: "The problems you want to solve with AI, and your current environment: diagrams, documentation or a few quick questions."
@@ -29,10 +38,14 @@ sections:
       - When an institution should choose it
     button: Request access to the Architecture Bot →
     link: https://shrsvc.educationfinanceinstitute.org/register/?id=8252012c-94e7-48e3-9cd0-1cc8d4ee324f
+  - type: text
+    id: trust
+    heading: Can I trust this?
+    body: "The bot describes the capabilities you need before it names any product, and every option lists its tradeoffs: cost, staffing, vendor lock-in, privacy and accuracy risk. Ed Advancement develops it with a working group of campus technology leaders who test each version. Its suggestions are a starting point for your IT team's own planning."
   - type: examples
     id: example-architectures
-    heading: Example architectures
-    subheading: The working group is collecting reference architectures from member institutions and will review them together, starting at the October 27 convening. Examples will appear here once the group has agreed on them.
+    heading: Who has already done it?
+    subheading: The working group is collecting reference architectures from institutions and will add them here once reviewed. Has your institution built an AI architecture others could learn from? Tell us.
     examples:
       - title: Large State University
         show: false
@@ -65,6 +78,7 @@ sections:
           - What it would take elsewhere
           - Source and date last checked
       - id: tech-station
+        show: false
         tag: From the July 2026 convening
         heading: The Tech station flip charts
         body: All five sheets from the Tech station at the Durham gallery walk, transcribed and paired with the original photos.
@@ -77,7 +91,7 @@ sections:
     body: |-
       Over time, the working group plans to extend this work into a fuller toolkit for designing and adopting a long-term AI stack. That likely means finding gaps in today’s market and filling them with open-source components that institutions can run in their own environments.
 
-      The group is taking stock of existing efforts in this space and will set next steps after the October 27 convening.
+      The group is taking stock of existing efforts in this space and agreeing who will lead each part of the work.
   - type: cards
     id: architecture-resources
     show: false

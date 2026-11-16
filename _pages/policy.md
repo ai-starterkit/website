@@ -7,11 +7,24 @@ sections:
   - type: hero
     heading: AI Policy
     lead: Help with writing or updating your institution's AI policy.
+    body: Faculty, staff and students are already using AI, and many institutions are still deciding what the rules should be. This page helps you write or update a policy that covers how AI is used, bought and governed, drawing on what peer institutions have already adopted.
+  - type: text
+    id: what-to-do-first
+    heading: What should I do first?
+    points:
+      - "Collect what you already have: AI guidance, syllabus statements, and your rules on procurement and data."
+      - Ask the Policy Bot a question, or upload your draft policy and get feedback on it.
+      - Compare your draft with the resources below, then take it through your institution's usual review and approval.
   - type: bot
     id: policy-bot
     heading: Policy Bot
     credit: Developed with UNCF and Unicon
-    body: The AI Policy Bot is designed to support higher education policy review and development. Use it to explore AI policy questions and review institutional guidance.
+    body: The AI Policy Bot is designed to support higher education policy review and development.
+    outputs_heading: "You can use it to:"
+    outputs:
+      - Ask questions about AI policy, such as academic integrity, data privacy or procurement
+      - Upload a draft policy and get feedback on it
+      - Review your guidance against what peer institutions have adopted
     button: Open the Policy Bot ↗
     link: https://d2jggx06aa9r1u.cloudfront.net/
   - type: cards
@@ -20,8 +33,17 @@ sections:
     columns: 2
     heading: Policy resources
     button: Visit ↗
+  - type: text
+    id: trust
+    heading: Can I trust this?
+    body: UNCF and Unicon built the Policy Bot with chief information officers at UNCF member institutions, who tested earlier versions through a community of practice. Their feedback and the Policy working group's shape each new version. The bot informs your work; decisions stay with your institution's own review and approval.
+  - type: text
+    id: who-has-done-it
+    heading: Who has already done it?
+    body: CIOs from UNCF member institutions have used the Policy Bot and shaped its current version. We are now looking for institutions of different types and sizes to test it on their own policies.
   - type: cta
     id: convening
+    show: false
     style: panel
     kicker: From the July 2026 convening
     heading: Policy discussions at the Durham gallery walk
