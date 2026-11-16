@@ -6,19 +6,19 @@
   --plum:#3D2A57; --plum-soft:#EEE8F1; --on-plum:#FAF7F1; --plum-hover:#E4DAEA;
   --note:#7F5F24; --note-bg:#FBF4E6; --on-sage:#1F1F1F; --hover:#DDE8E3; --nav-active:#243829; --on-nav-active:#FAF7F1; --chrome:#E4DDD2; --shadow:rgba(36,56,41,.10);
   --wf-line:#C6BBAA; --wf-head:#6E9E91; --wf-soft:#DCD3C6;
-  --logo-bg:#FFFFFF; --logo-fg:#1F1F1F;
+  --logo-bg:#FFFFFF; --logo-fg:#1F1F1F; --logo-text:#58585A;
   --f-head:"EB Garamond",Garamond,"Times New Roman",serif; --f-body:"Open Sans","Segoe UI",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --desk:#141716; --bg:#191C1B; --panel:#222725; --card:#202523; --rule:#38403D; --fg:#ECE8E1; --muted:#A5ABA7;
   --green:#8CC4B4; --deep:#C2DCD3; --sage:#74B2A1; --green-soft:#22342E; --onGreen:#10201A; --deep-bg:#243829; --on-deep:#ECE8E1; --on-deep-muted:#B4CCC4;
   --plum:#C9B6E6; --plum-soft:#2C2438; --on-plum:#1A1424; --plum-hover:#372D46;
-  --note:#E2C48A; --note-bg:#2C281F; --on-sage:#1F1F1F; --hover:#22342E; --nav-active:#2F4A3A; --on-nav-active:#ECE8E1; --chrome:#262B29; --shadow:rgba(0,0,0,.35); --wf-line:#4C5652; --wf-head:#86ACA2; --wf-soft:#363E3B; color-scheme:dark}}
+  --note:#E2C48A; --note-bg:#2C281F; --on-sage:#1F1F1F; --hover:#22342E; --nav-active:#2F4A3A; --on-nav-active:#ECE8E1; --chrome:#262B29; --shadow:rgba(0,0,0,.35); --wf-line:#4C5652; --wf-head:#86ACA2; --wf-soft:#363E3B; --logo-text:#D9D6D0; color-scheme:dark}}
 :root[data-theme="dark"]{
   --desk:#141716; --bg:#191C1B; --panel:#222725; --card:#202523; --rule:#38403D; --fg:#ECE8E1; --muted:#A5ABA7;
   --green:#8CC4B4; --deep:#C2DCD3; --sage:#74B2A1; --green-soft:#22342E; --onGreen:#10201A; --deep-bg:#243829; --on-deep:#ECE8E1; --on-deep-muted:#B4CCC4;
   --plum:#C9B6E6; --plum-soft:#2C2438; --on-plum:#1A1424; --plum-hover:#372D46;
-  --note:#E2C48A; --note-bg:#2C281F; --on-sage:#1F1F1F; --hover:#22342E; --nav-active:#2F4A3A; --on-nav-active:#ECE8E1; --chrome:#262B29; --shadow:rgba(0,0,0,.35); --wf-line:#4C5652; --wf-head:#86ACA2; --wf-soft:#363E3B; color-scheme:dark}
+  --note:#E2C48A; --note-bg:#2C281F; --on-sage:#1F1F1F; --hover:#22342E; --nav-active:#2F4A3A; --on-nav-active:#ECE8E1; --chrome:#262B29; --shadow:rgba(0,0,0,.35); --wf-line:#4C5652; --wf-head:#86ACA2; --wf-soft:#363E3B; --logo-text:#D9D6D0; color-scheme:dark}
 *{box-sizing:border-box}
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55}
@@ -31,7 +31,7 @@ h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;margin:0;text-wrap:balance
 .site{background:var(--bg);font-size:15px}
 .s-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;padding:12px 24px;border-bottom:1px solid var(--rule)}
 .brand{display:flex;align-items:center;gap:8px;font-family:var(--f-head);font-weight:600;font-size:18px;color:var(--deep);text-decoration:none;flex:none}
-.brand svg{width:20px;height:20px;fill:var(--green)}
+.brand img{width:auto;height:34px}
 .s-nav{display:flex;flex-wrap:wrap;gap:2px;min-width:0}
 .s-nav a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:5px 9px;border-radius:5px;white-space:nowrap}
 .s-nav a:hover{color:var(--fg);background:var(--panel)}
@@ -230,9 +230,8 @@ ol.fields li::marker{color:var(--green);font-weight:700}
 .outfoot{text-align:center;font-size:13px;color:var(--muted)}
 
 /* ---------- Brand pass (Starter Kit Brand Guidelines, Sept 2026) ---------- */
-.brand{font-size:20px}
-.brand svg{fill:var(--sage)}
-.brand svg rect:last-child{fill:var(--deep)}
+.brand{gap:11px;font-family:var(--f-mono);font-weight:500;font-size:19.5px;letter-spacing:0;color:var(--logo-text)}
+.brand img{display:block;width:auto;height:34px}
 .site h1{font-size:clamp(30px,3.9vw,42px);line-height:1.08;font-weight:500}
 .site h2{font-size:24px}
 .site h3{font-size:19px}
