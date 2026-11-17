@@ -7,14 +7,13 @@ sections:
   - type: hero
     heading: AI Maturity Assessment
     lead: To understand how ready your institution is to use AI, look at your technical capabilities and at how prepared people are to change the way they work.
-    body: An assessment gives your leadership team a shared picture of where your institution stands, so you can decide where to start and explain why. Below you can assess your institution as a whole or look closely at one area or proposed project.
+    body: An assessment gives your leadership team a shared picture of where your institution stands, so you can decide where to start and explain why. Below, you can assess your college, university or system as a whole, or look closely at a particular area or proposed project.
   - type: text
     id: what-to-do-first
     heading: What should I do first?
     points:
-      - Decide what you want to improve for students and how you will measure success, including when you are improving operations behind the scenes.
-      - Bring in faculty, staff and students from across campus early, with support from your leadership. People in different roles may need different preparation.
-      - Choose one assessment below. Compare how long it takes and whether it covers the whole institution or one area.
+      - Start with what you want to improve for students and how you will measure success, including when you are improving operations behind the scenes.
+      - Involve colleagues across campus, with support from your leadership, and keep in mind that people in different roles may need different preparation.
       - Check whether you can access reliable data securely and connect the systems you need.
       - Finish with concrete next steps, whether you can begin a project now or need to address gaps first.
   - type: cards
@@ -22,7 +21,7 @@ sections:
     style: source
     columns: 3
     heading: Assess your institution overall
-    body: These are a small set of openly accessible assessments, chosen with broad-access institutions in mind. Use them to look at readiness across departments and decide where to focus.
+    body: These are a small set of openly accessible assessments, chosen with broad-access institutions in mind. Use them to look at readiness across departments and decide where to focus. When comparing options, consider how the developers tested their approach and how much time your team would need to complete it. Look for practical guidance on involving colleagues and turning findings into an institutional plan, and check the permissions before adapting any materials.
     button: Visit ↗
     parts:
       - type: license_key
@@ -52,11 +51,11 @@ sections:
   - type: text
     id: trust
     heading: Can I trust this?
-    body: Every assessment here is openly accessible, and each card names its publisher, license and year. The AI Maturity Assessment working group chooses them for broad-access institutions, looking at how each was tested and how much time it asks of your team. Partners including UNCF, Ed Advancement and SRI are developing further assessments, which we will add as they become available. Last reviewed November 2026.
+    body: Every assessment here is openly accessible, and each card names its publisher, license and year. The AI Maturity Assessment working group chooses them with broad-access institutions in mind. Partners including UNCF, Ed Advancement and SRI are developing further assessments, which we will add as they become available. Last reviewed November 2026.
   - type: case_studies
     id: case-studies
     heading: Who has already done it?
-    subheading: Institutions in the AI Starter Kit Implementation Pilot are completing a readiness assessment this winter, and we will share what they learn here.
+    subheading: How institutions are building their readiness for AI. Institutions in the AI Starter Kit Implementation Pilot are completing a readiness assessment this winter, and we will share what they learn here.
     fallback:
       - title: Where they started
         text: Institution type, size, and what was already in place.
