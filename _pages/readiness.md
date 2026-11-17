@@ -47,7 +47,14 @@ sections:
   - type: text
     id: specific-area-or-project
     heading: Examine a specific area or project
-    body: "You may already know where you might use AI and want a closer look at what it would take. In teaching and learning, for example, you could check how prepared instructors are to use AI in their courses and what support they still need. You could also add a readiness check to your project management office's approval process: does the proposed project need AI, and what must be in place before it goes ahead? This section will collect resources for these focused reviews."
+    body: "You may already know where you might use AI and want a closer look at what it would take. In teaching and learning, for example, you could check how prepared instructors are to use AI in their courses and what support they still need. You could also add a readiness check to your project management office's approval process: does the proposed project need AI, and what must be in place before it goes ahead? This section collects resources for these focused reviews, starting with how one university chose an AI platform."
+  - type: cards
+    id: choosing-a-platform
+    style: source
+    columns: 2
+    heading: Choosing an AI platform
+    subheading: How the University of New Mexico evaluated vendors, shared for other institutions to adapt.
+    button: Download ↗
   - type: text
     id: trust
     heading: Can I trust this?
