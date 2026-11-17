@@ -42,6 +42,11 @@ sections:
   callout:
     fields: [label, heading, body]
     required: [heading]
+  vote:
+    fields: [heading, subheading, body, max, options, other_title, other_text, other_placeholder, vote_label, voted_label, count_label, button, email_subject, email_intro, after_sending]
+    required: [heading, options, other_title, vote_label, voted_label, button, email_subject, after_sending]
+    lists:
+      options: { fields: [id, title, text, show], required: [id, title] }
   cta:
     fields: [kicker, heading, body, button, link, points, style]
     required: [heading, button, style]

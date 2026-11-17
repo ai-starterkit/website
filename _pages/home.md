@@ -38,11 +38,10 @@ sections:
         text: Resources for faculty and staff  bringing AI into teaching and learning.
         button: Open →
         link: teaching-learning
-      - title: AI Advising
-        badge: Coming soon
-        text: Use cases and blueprints from institutions using AI to support advising, freeing advisors to focus on the conversations that matter most.
-        button: Learn more →
-        link: advising
+      - title: What's next
+        text: Vote on the topics the AI Starter Kit should take on next, or suggest your own.
+        button: Vote →
+        link: whats-next
       - title: AI in Practice
         text: Use cases showing how other broad-access institutions are using AI, shared by the community.
         button: Open →

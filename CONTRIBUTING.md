@@ -25,7 +25,7 @@ To undo a merged change, open its pull request and select "Revert"; that opens a
 | The UNC System Office case study | `_case_studies/unc.md` |
 | An image or logo | `assets/img/` (Add file > Upload files) |
 
-The page files are `home`, `readiness` (AI Maturity Assessment), `policy`, `architecture`, `teaching-learning`, `advising`, `ai-in-practice`, `about` and `contact`. The Digital Education Council use cases are reproduced as published; ask a maintainer about those.
+The page files are `home`, `readiness` (AI Maturity Assessment), `policy`, `architecture`, `teaching-learning`, `whats-next` (What's next), `ai-in-practice`, `about` and `contact`. The Digital Education Council use cases are reproduced as published; ask a maintainer about those.
 
 ## How the files work
 
@@ -69,6 +69,7 @@ A page file has a `browser_title`, a search engine `description`, and `sections`
 | `cta` | A call to action box | `kicker`, `heading`, `body`, `button`, `link`, `points`; `style: join`, `band` or `panel` |
 | `bot` | A bot and its button | `heading`, `credit`, `body`, `steps`, `outputs_heading`, `outputs`, `button`, `link` |
 | `callout` | A highlighted question to readers | `label`, `heading`, `body` |
+| `vote` | Topic cards with vote buttons, an "Other" card with a text box, and a send button | `heading`, `subheading`, `max` (how many a visitor can pick), `options` (each with `id`, `title`, `text`), `other_title`, `other_text`, `other_placeholder`, `vote_label`, `voted_label`, `count_label` (`{n}` and `{max}` are filled in), `button`, `email_subject`, `email_intro`, `after_sending` |
 | `form` | The contact form (words in `_data/site.yml`) | none |
 
 Card styles: `kit` (home), `criteria` and `timeline` (About), `split` (AI Advising), `learn` and `resource` (Teaching & Learning), `community` (AI in Practice) list their cards under `items`. The `source`, `context` and `resource` styles show the resource cards from `_resources/` whose `page` and `section` match.

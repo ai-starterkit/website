@@ -18,8 +18,8 @@ menu:
     label: Technology Architecture
   - page: teaching-learning
     label: Teaching & Learning
-  - page: advising
-    label: AI Advising
+  - page: whats-next
+    label: What's next
   - page: ai-in-practice
     label: AI in Practice
   - page: about
@@ -45,5 +45,5 @@ contact_form:
     - Technology architecture
     - Maturity assessment
     - Teaching and learning Innovation
-    - AI advising
+    - Suggest a new topic
     - Getting involved
