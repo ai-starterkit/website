@@ -91,7 +91,19 @@ sections:
     body: |-
       Over time, the working group plans to extend this work into a fuller toolkit for designing and adopting a long-term AI stack. That likely means finding gaps in today’s market and filling them with open-source components that institutions can run in their own environments.
 
-      The group is taking stock of existing efforts in this space and agreeing who will lead each part of the work.
+      No partner leads this part of the work yet. In the meantime, these are platforms institutions are already experimenting with.
+  - type: cards
+    id: stack-examples
+    style: source
+    columns: 3
+    heading: Platforms institutions are experimenting with
+    subheading: Examples from the field, listed for reference.
+    button: Visit ↗
+  - type: callout
+    id: stack-share
+    label: Tell us
+    heading: What are you building or using?
+    body: We'd love to hear about the AI platforms your institution is building or trying, and what you have learned. [Get in touch](contact).
   - type: cards
     id: architecture-resources
     show: false
