@@ -68,8 +68,8 @@ sections:
         name: Indiana University
       - image: ai-for-teaching-and-learning-institute.png
         name: AI for Teaching and Learning Institute
-      - wordmark: "**CAI**ON"
-        name: Chief AI Officers Network
+      - image: caion-chief-ai-officer-network.png
+        name: CAION, Chief AI Officer Network
   - type: text
     id: closing
     style: plain
