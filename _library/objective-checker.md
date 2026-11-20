@@ -1,6 +1,7 @@
 ---
 title: Objective checker
 kind: skill
+show: false
 part: Outcomes
 order: 2
 description: Reviews a list of objectives and returns fixes.
