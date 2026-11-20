@@ -7,8 +7,8 @@ anchor_prefix: tl-
 sections:
   - type: hero
     kicker: Teaching & Learning
-    heading: Use AI to design for learning, not just to produce content
-    lead: AI can draft a syllabus, a quiz or a lesson in seconds. The hard part is making sure the goals, the assessments and the class activities fit together so students actually learn. This page shows faculty where AI helps with each part, and gives them tools to try it on their own course today.
+    heading: Use AI to design courses grounded in how people learn
+    lead: AI can draft a syllabus, a quiz or a lesson in seconds. The hard part is still making sure the goals, the assessments and the class activities fit together so students actually learn. This page gives faculty a framework from the learning sciences for doing that with AI, plus free tools to try it on their own course today.
     share_label: Leading AI at your institution?
     share_text: Share this page with faculty, instructional designers and teaching-center staff. No AI experience needed.
     credit: Led by Carnegie Mellon University's Open Learning Initiative, College of the Canyons, and SUNY.
@@ -26,7 +26,7 @@ sections:
     id: learn-more
     style: learn
     on_this_page: Learn more
-    heading: Learn the framework, then apply it
+    heading: Three ways to learn it
     items:
       - title: AI for Learning course
         label: On your own
