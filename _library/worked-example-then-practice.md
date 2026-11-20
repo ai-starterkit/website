@@ -1,6 +1,7 @@
 ---
 title: Worked example, then practice
 kind: prompt
+show: false
 part: Instruction
 order: 6
 description: Turns an explanation into a short learn-by-doing sequence.
