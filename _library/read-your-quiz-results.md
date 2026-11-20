@@ -1,6 +1,7 @@
 ---
 title: Read your quiz results
 kind: prompt
+show: false
 part: Improve
 order: 8
 description: Finds where students struggle and why.
