@@ -1,6 +1,7 @@
 ---
 title: Wrong answers from real misconceptions
 kind: prompt
+show: false
 part: Assessment
 order: 4
 description: Builds multiple-choice options that diagnose, not trick.
