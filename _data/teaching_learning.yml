@@ -9,8 +9,8 @@
 # page; library also filters the library to this part. Placeholders {n} and {total} are filled in.
 
 framework:
-  heading: "The framework: align, then improve"
-  subheading: "A well-designed course keeps three things aligned: what students should learn, how you'll know they learned it, and how they practice. Then it uses evidence to keep getting better."
+  heading: "The framework: aligned backward design"
+  subheading: Backward design starts with learning outcomes, then decides what evidence will show students reached them, then plans how students will learn and practice. All three stay aligned, and evidence from students' work shows what to improve.
   hint: "Interactive: click each part of the model to see where AI helps"
   progress: "{n} of {total} explored"
   progress_complete: All {total} explored
@@ -28,10 +28,10 @@ framework:
       short_name: Outcomes
       question: What should students be able to do by the end?
       where_ai_helps:
-        - Turn a topic into objectives you can assess
-        - Flag vague verbs like “understand”
-        - Break an objective into the skills it needs
-      learning_science: Backward design starts from the evidence of learning you want, then works back to activities.
+        - Write clear objectives for a unit, with what would show each one
+        - Get expert-style feedback on objectives you already have
+        - Break a big goal into the component skills it needs
+      learning_science: "Backward design starts with learning outcomes: decide what students should be able to do, then what evidence would show it, then plan how they'll learn it. Clear outcomes name a capability you can see, not just a topic to cover."
       use_on_this_page:
         - label: "Try it: rewrite my objectives"
           link: try-it
@@ -44,11 +44,10 @@ framework:
       short_name: Assessment
       question: How will you know they learned it?
       where_ai_helps:
-        - Draft practice questions tied to one objective
-        - Write wrong answers from real misconceptions
-        - Check whether an assignment still works when students use AI
-        - Draft targeted feedback for each answer
-      learning_science: Practice with feedback is where most learning happens. An assessment should measure the objective, not the student's access to AI.
+        - Design a task that shows real learning, and how to judge it
+        - Get feedback on an assessment and its answer key or rubric
+        - Check what AI can fake in an assignment, and make thinking visible
+      learning_science: "Practice with feedback is where most learning happens. An assessment is evidence: students' work only shows learning if the task asks them to do what the outcome describes (validity). Low-stakes practice that makes students recall and apply ideas, with specific, timely feedback, also strengthens learning itself."
       use_on_this_page:
         - label: "Try it: check my assignment"
           link: try-it
@@ -63,10 +62,10 @@ framework:
       short_name: Instruction
       question: How will students practice and learn?
       where_ai_helps:
-        - Build worked examples and practice sequences
-        - Explain one idea at several levels
-        - Design course chatbots that coach instead of answering
-      learning_science: Students learn by doing. Activities should give practice on the objective, not just more to read.
+        - "Plan a sequence: prerequisites, explanation, practice, feedback"
+        - Explain a hard idea with a worked example and practice
+        - Get feedback on a course page or lesson
+      learning_science: Students learn by doing. Activities should give practice on the outcome, not just more to read, and worked examples help novices before they practice on their own.
       use_on_this_page:
         - label: "Try it: design an activity"
           link: try-it
@@ -81,8 +80,8 @@ framework:
       where_ai_helps:
         - Summarize quiz and activity results
         - Spot the questions most students miss
-        - Suggest revisions, then check them against the objective
-      learning_science: "Learning engineering: design, collect evidence of learning, revise, and repeat. This is how OLI courses improve over time."
+        - Suggest revisions, then check them against the outcome
+      learning_science: "Learning engineering: design, collect evidence of learning, revise, and repeat. This is how OLI courses improve over time. Prompts for this step are coming soon."
       use_on_this_page:
         - label: "Library: Improve"
           link: library
@@ -170,11 +169,11 @@ comparison:
       aligned: Instruction gives practice with feedback.
 library:
   heading: Prompt & Skill Library
-  subheading: Ready to go further? More prompts and skills for each part of the framework, to use in whatever AI tool your institution supports.
+  subheading: Ready to go further? Prompts for each part of the framework, to use in whatever AI tool your institution supports. Skills are coming soon.
   guide_heading: New to prompts? Here's how to use this library
   guide_steps:
     - Pick the part of your course you're working on, using the filters below.
-    - Copy a prompt or a skill.
+    - "Copy a prompt. Create prompts help you draft; Review prompts give you expert-style feedback on your own work."
     - Paste it into an AI tool, such as the companion above or the one your campus provides, and replace the [brackets] with your course details.
   prompt_label: Prompt
   prompt_definition: One request for one task, like rewriting your objectives. Paste it, get an answer.
