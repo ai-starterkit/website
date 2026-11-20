@@ -9,10 +9,40 @@ sections:
     kicker: Teaching & Learning
     heading: Use AI to design courses grounded in how people learn
     lead: AI can draft a syllabus, a quiz or a lesson in seconds. The hard part is still making sure the goals, the assessments and the class activities fit together so students actually learn. This page gives faculty a framework from the learning sciences for doing that with AI, plus free tools to try it on their own course today.
-    share_label: Leading AI at your institution?
-    share_text: Share this page with faculty, instructional designers and teaching-center staff. No AI experience needed.
-    credit: Led by Carnegie Mellon University's Open Learning Initiative, College of the Canyons, and SUNY.
     on_this_page_label: On this page
+  - type: cards
+    id: audience
+    style: learn
+    heading: This page is for you if…
+    items:
+      - title: You teach a course
+        text: and want AI to help with your objectives, assignments or class activities. No AI experience needed.
+        label: Start here
+        link_text: Try it on a real task →
+        link: "#tl-try-it"
+        details: About 5 minutes
+      - title: You design courses or support faculty
+        text: as an instructional designer, faculty developer or teaching-center staff member.
+        label: Start here
+        link_text: Explore the framework →
+        link: "#tl-framework"
+        details: Then use the library in your workshops
+      - title: You lead teaching or AI at your institution
+        text: and want faculty to build these skills, on their own or as a team.
+        label: Start here
+        link_text: See the learning paths →
+        link: "#tl-involved"
+        details: And share this page with your faculty
+  - type: cards
+    id: proof
+    style: criteria
+    items:
+      - title: Grounded in learning science
+        text: Backward design and the learning engineering approach behind CMU's Open Learning Initiative.
+      - title: Built with faculty
+        text: More than 75 faculty from broad-access institutions helped design the AI for Learning course.
+      - title: Led by educators, free to use
+        text: Led by CMU's Open Learning Initiative, College of the Canyons and SUNY. Openly licensed.
   - type: framework
     id: framework
     on_this_page: "1 · The framework"
@@ -23,9 +53,22 @@ sections:
     id: library
     on_this_page: "3 · Prompt & Skill Library"
   - type: cards
+    id: involved
+    style: criteria
+    on_this_page: Who's doing it
+    heading: Join faculty who are already doing this
+    subheading: Here's who is involved so far, and how to join them.
+    body: See how other broad-access institutions use AI on the [AI in Practice](ai-in-practice) page.
+    items:
+      - title: "700+"
+        text: faculty signed up for the AI for Learning course.
+      - title: "4 partners"
+        text: SUNY, the California Community Colleges, UNCF and CMU's Open Learning Initiative work together in the network.
+      - title: Jan 2027
+        text: The first cohort of campus teams starts the AI for Teaching and Learning Institute, then shares what it builds openly.
+  - type: cards
     id: learn-more
     style: learn
-    on_this_page: Learn more
     heading: Three ways to learn it
     items:
       - title: AI for Learning course
