@@ -1,6 +1,7 @@
 ---
 title: Alignment audit
 kind: skill
+show: false
 part: Improve
 order: 9
 description: Maps objectives to assessments and activities, and finds the gaps.
