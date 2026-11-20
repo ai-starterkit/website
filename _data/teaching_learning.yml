@@ -86,7 +86,7 @@ framework:
         - label: "Library: Improve"
           link: library
         - label: AI for Teaching and Learning Institute
-          link: learn-more
+          link: "#tl-involved"
 try_it:
   heading: Try it on a real task
   subheading: The AI for Learning Companion is a chatbot built on this framework. Pick the situation that sounds most like yours, copy the starter prompt, and paste it into the companion.
