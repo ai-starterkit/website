@@ -1,6 +1,7 @@
 ---
 title: Turn a topic into measurable objectives
 kind: prompt
+show: false
 part: Outcomes
 order: 1
 description: Gets two or three objectives that name something students do.
