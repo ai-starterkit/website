@@ -1,6 +1,7 @@
 ---
 title: Course chatbot that coaches
 kind: skill
+show: false
 part: Instruction
 order: 7
 description: Instructions for a course chatbot that guides instead of giving answers.
