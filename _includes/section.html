@@ -1,0 +1,8 @@
+{%- comment -%}
+  Renders one section of a page with the template for its type. "show: false" hides it.
+  Section templates read include.s and render any "parts" last, so a nested section cannot
+  disturb its parent's variables.
+{%- endcomment -%}
+{%- unless include.s.show == false -%}
+{%- include sections/{{ include.s.type }}.html s=include.s -%}
+{%- endunless -%}

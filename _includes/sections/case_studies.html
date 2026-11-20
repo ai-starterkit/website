@@ -1,0 +1,22 @@
+{%- comment -%}
+  Case studies from _case_studies/, in file-name order. Until there is one, the "fallback" strip
+  shows the three-part format they follow.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign studies = site.case_studies | where_exp: "x", "x.show != false" | sort: "relative_path" -%}
+<div class="sec">{% include sec-head.html s=s %}
+  {% if studies.size > 0 -%}
+  {%- for cs in studies -%}
+  {%- assign cs_id = cs.slug | prepend: "case-" -%}
+<article class="usecase" aria-labelledby="{{ cs_id }}">
+  {% if cs.kicker %}<span class="kick">{{ cs.kicker | sk_md }}</span>{% endif %}
+  <h3 id="{{ cs_id }}">{{ cs.title | sk_md }}</h3>
+  <div class="uc-parts">
+{{ cs.content | sk_case_parts | sk_links }}
+  </div>
+</article>
+  {%- endfor -%}
+  {%- else -%}
+  <div class="casefmt">{% for it in s.fallback %}<div><b>{{ it.title | sk_md }}</b><span>{{ it.text | sk_md }}</span></div>{% endfor %}</div>
+  {%- endif %}
+</div>

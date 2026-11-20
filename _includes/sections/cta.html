@@ -1,0 +1,14 @@
+{%- comment -%}
+  A call to action. style: join (the lavender box that ends an initiative page), band (the green
+  box), or panel (a quieter box whose button is switched off while its link is blank).
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- if s.style == "panel" -%}
+<div class="panel">{% if s.kicker %}<span class="kick">{{ s.kicker | sk_md }}</span>{% endif %}<h2>{{ s.heading | sk_md }}</h2>{{ s.body | sk_md_block }}<div class="row">{% include button.html label=s.button link=s.link %}</div></div>
+{%- else -%}
+{%- assign url = s.link | sk_link -%}
+{% unless s.style == 'join' %}<div class="sec">{% endunless %}<div class="band{% if s.style == 'join' %} join{% endif %}">
+  <div class="side">{% if s.kicker %}<span class="kick">{{ s.kicker | sk_md }}</span>{% endif %}<h2>{{ s.heading | sk_md }}</h2>{{ s.body | sk_md_block }}<a class="btn" href="{{ url }}"{{ url | sk_target }}>{{ s.button | sk_md }}</a></div>
+  {% if s.points.size > 0 %}<ul>{% for li in s.points %}<li>{{ li | sk_md }}</li>{% endfor %}</ul>{% endif %}
+</div>{% unless s.style == 'join' %}</div>{% endunless %}
+{%- endif -%}

@@ -1,0 +1,39 @@
+# Checks every pull request before it can be merged. Make "Build and check" a required status
+# check in the ruleset on main, so nothing reaches the live site until it passes.
+#
+#   1. Jekyll build, which first runs the content check (_plugins/starterkit.rb against _schema.yml):
+#      missing or unknown fields, links that point nowhere, cards placed in sections that don't exist.
+#   2. HTMLProofer on the built site: broken internal links, missing images, images without alt text.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build and check
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - uses: ruby/setup-ruby@a5612086821ed5ff914a94f49c9e4e6ee039fb72 # v1.337.0
+        with:
+          bundler-cache: true
+
+      - name: Build the site (stops on any content problem)
+        run: bundle exec jekyll build --strict_front_matter
+
+      - name: Check internal links, images and alt text
+        run: bundle exec htmlproofer _site --disable-external --no-enforce-https

@@ -1,0 +1,11 @@
+{%- comment -%}
+  A button. With a blank link it shows switched off, rather than as a dead link.
+  Parameters: label, link, class (default "btn ghost").
+{%- endcomment -%}
+{%- assign btn_class = include.class | default: "btn ghost" -%}
+{%- assign btn_url = include.link | sk_link -%}
+{%- if btn_url == "" -%}
+<span class="{{ btn_class }} off" aria-disabled="true">{{ include.label | sk_md }}</span>
+{%- else -%}
+<a class="{{ btn_class }}" href="{{ btn_url }}"{{ btn_url | sk_target }}>{{ include.label | sk_md }}</a>
+{%- endif -%}

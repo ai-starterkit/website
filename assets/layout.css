@@ -1,0 +1,14 @@
+/* Full-page layout for the live site. site.css carries the design from the mockup; this file
+   stretches the mockup's framed pages to a full browser window. */
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);line-height:1.55}
+.site{min-height:100vh;display:flex;flex-direction:column}
+.s-head,.s-foot{padding-inline:max(24px,calc((100% - 1180px)/2 + 32px))}
+.s-body{width:100%;max-width:1180px;margin:0 auto;flex:1}
+@media (max-width:720px){.s-head,.s-foot{padding-inline:14px}}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--card);color:var(--fg);padding:8px 12px;border-radius:6px;z-index:10}
+.skip:focus{left:8px}
+
+/* Technology Architecture: what each bot recommendation covers */
+.outs{margin-top:28px}
+.outs h3{margin-bottom:8px}

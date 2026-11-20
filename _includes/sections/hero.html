@@ -1,0 +1,31 @@
+{%- comment -%}
+  The top of a page. Optional extras: a badge, a share line, a credit, "On this page" links built
+  from the sections that have on_this_page, a work-in-progress box, and parts shown beside the hero
+  (the home page's "What is it?").
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- if s.parts %}<div class="home-top">
+  {% endif -%}
+<div class="hero">
+  {%- if s.badge %}<span class="soon-pill">{{ s.badge | sk_md }}</span>{% endif -%}
+  {%- if s.kicker %}<span class="kick">{{ s.kicker | sk_md }}</span>{% endif -%}
+  <h1>{{ s.heading | sk_md }}</h1>
+  {%- if s.lead %}<p class="lead">{{ s.lead | sk_md }}</p>{% endif -%}
+  {{ s.body | sk_md_block }}
+  {%- if s.share_text %}<p class="share">{% if s.share_label %}<b>{{ s.share_label | sk_md }}</b>{% endif %} {{ s.share_text | sk_md }}</p>{% endif -%}
+  {%- if s.credit %}<span class="credit">{{ s.credit | sk_md }}</span>{% endif -%}
+  {%- assign jumps = page.sections | where_exp: "x", "x.on_this_page" -%}
+  {%- if jumps.size > 0 -%}
+    {%- capture nav_label %}{{ s.on_this_page_label | sk_plain }}{% endcapture -%}
+    <nav class="jump" aria-label="{{ nav_label | default: 'On this page' | escape }}">
+      {%- for j in jumps %}<a href="#{{ page.anchor_prefix }}{{ j.id }}">{{ j.on_this_page | sk_md }}</a>{% endfor -%}
+    </nav>
+  {%- endif -%}
+  {%- if s.box_text %}<div class="wip">{% if s.box_label %}<span class="lbl">{{ s.box_label | sk_md }}</span>{% endif %}<p>{{ s.box_text | sk_md }}</p></div>{% endif -%}
+</div>
+{%- if s.parts %}
+  <div class="home-aside">
+    {%- for p in s.parts %}{% include section.html s=p %}{% endfor -%}
+  </div>
+</div>
+{%- endif -%}

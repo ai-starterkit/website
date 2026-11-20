@@ -1,0 +1,18 @@
+{%- comment -%}
+  Who's building it: paragraphs, the group photo with its caption, and the partner logos. Logo images
+  live in assets/img/; an entry with a wordmark instead of an image shows as text.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+<div class="sec collab" id="who">{% include sec-head.html s=s %}{{ s.body | sk_md_block }}
+  {% if s.photo %}<figure class="photo"><div class="pic"><img src="{{ '/assets/img/' | append: s.photo | relative_url }}" alt="{{ s.photo_description | sk_plain | escape }}" loading="lazy"></div><figcaption>{{ s.photo_caption | sk_md }}</figcaption></figure>{% endif %}
+  {% if s.kicker %}<span class="kick">{{ s.kicker | sk_md }}</span>{% endif %}
+  <div class="logos">
+    {%- for l in s.logos -%}
+    {%- if l.image -%}
+    <div class="logo"><img src="{{ '/assets/img/' | append: l.image | relative_url }}" alt="{{ l.name | sk_plain | escape }}" loading="lazy"></div>
+    {%- else -%}
+    <div class="logo txt"><b>{{ l.wordmark | sk_md }}</b><span>{{ l.name | sk_md }}</span></div>
+    {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>

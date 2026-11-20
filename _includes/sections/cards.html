@@ -1,0 +1,106 @@
+{%- comment -%}
+  A set of cards. The style sets how they look and where they come from:
+    kit, criteria, timeline, split, learn, community: cards listed in the section's own "items"
+    source, context, resource: resource cards from _resources/ whose page and section match this
+    section, in "order"
+  "columns" (2 or 3) sets the grid for source cards. "parts" are shown inside the same box, last.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign anchor = "" -%}
+{%- if s.on_this_page %}{% capture anchor %} id="{{ page.anchor_prefix }}{{ s.id }}"{% endcapture %}{% endif -%}
+{%- assign items = s.items | where_exp: "x", "x.show != false" -%}
+{%- if s.style == "source" or s.style == "context" or s.style == "resource" -%}
+  {%- assign items = site.resources | where: "page", page.page_id | where: "section", s.id | where_exp: "x", "x.show != false" | sort: "order" -%}
+{%- endif -%}
+
+{%- case include.s.style -%}
+
+{%- when "kit" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}
+  <div class="kit">
+  {%- for it in items -%}
+    {%- assign url = it.link | sk_link %}
+    <a class="card{% if it.badge %} soon{% endif %}" href="{{ url }}"{{ url | sk_target }}>{% if it.badge %}<span class="soon-pill">{{ it.badge | sk_md }}</span>{% endif %}<h3>{{ it.title | sk_md }}</h3><p>{{ it.text | sk_md }}</p><span class="go">{{ it.button | sk_md }}</span></a>
+  {%- endfor -%}
+  </div>
+</div>
+
+{%- when "source" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}{{ s.body | sk_md_block }}
+  <div class="grid g{{ s.columns | default: 3 }}">
+  {%- for it in items %}
+    {% include source-card.html card=it button=s.button %}
+  {%- endfor -%}
+  </div>
+  {%- for p in s.parts %}
+  {% include section.html s=p %}
+  {%- endfor %}
+</div>
+
+{%- when "context" -%}
+{%- if items.size > 0 -%}
+<div class="ctx">{% if s.kicker %}<span class="kick">{{ s.kicker | sk_md }}</span>{% endif %}
+  {%- for it in items %}{% include source-card.html card=it button=s.button %}{% endfor -%}
+</div>
+{%- endif -%}
+
+{%- when "resource" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}
+  <div class="grid g3">
+  {%- for it in items -%}
+    {%- assign url = it.link | sk_link -%}
+    {%- capture inner %}<span class="ndtag">{{ it.part_tag | sk_md }}</span><span class="tag">{{ it.tag | sk_md }}</span><h3>{{ it.title | sk_md }}</h3>{{ it.content | strip | sk_links }}{% endcapture %}
+    {%- if url != "" %}
+    <a class="card" href="{{ url }}"{{ url | sk_target }}>{{ inner }}<span class="go">{{ it.button | sk_md }}</span></a>
+    {%- else %}
+    <div class="card slot">{{ inner }}</div>
+    {%- endif -%}
+  {%- endfor -%}
+  </div>
+</div>
+
+{%- when "criteria" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}<div class="crit">
+  {%- for it in items %}<div><b>{{ it.title | sk_md }}</b><span>{{ it.text | sk_md }}</span></div>{% endfor -%}
+</div></div>
+
+{%- when "timeline" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}
+  <ol class="tl">
+  {%- for it in items -%}
+    {%- assign title_down = it.title | downcase -%}
+    <li{% if forloop.last and title_down == "next" %} class="next"{% endif %}><b>{{ it.title | sk_md }}</b><p>{{ it.text | sk_md }}</p></li>
+  {%- endfor -%}
+  </ol>
+</div>
+
+{%- when "split" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}
+  <div class="split">
+  {%- for it in items -%}
+    <div><h3>{{ it.title | sk_md }}</h3>{{ it.body | sk_md_block }}{% if it.points.size > 0 %}<ul>{% for li in it.points %}<li>{{ li | sk_md }}</li>{% endfor %}</ul>{% endif %}</div>
+  {%- endfor -%}
+  </div>
+</div>
+
+{%- when "learn" -%}
+<div class="sec"{{ anchor }}>{% include sec-head.html s=s %}
+  <div class="steps">
+  {%- for it in items -%}
+    {%- assign url = it.link | sk_link -%}
+    <div class="step"><span class="n">{{ it.label | sk_md }}</span><h3>{{ it.title | sk_md }}</h3>{% if it.details %}<span class="w">{{ it.details | sk_md }}</span>{% endif %}<p>{{ it.text | sk_md }}</p>{% if url != "" %}<a class="more" href="{{ url }}"{{ url | sk_target }}>{{ it.link_text | sk_md }}</a>{% endif %}</div>
+  {%- endfor -%}
+  </div>
+</div>
+
+{%- when "community" -%}
+<div class="sec uc-group"{{ anchor }}>{% include sec-head.html s=s %}
+  <div class="grid uc-one">
+  {%- for it in items -%}
+    {%- assign url = it.link | sk_link %}
+    <a class="card uc share" href="{{ url }}"{{ url | sk_target }}><span class="tag">{{ it.tag | sk_md }}</span><h3>{{ it.title | sk_md }}</h3><p>{{ it.text | sk_md }}</p><span class="go">{{ it.button | sk_md }}</span></a>
+  {%- endfor -%}
+  </div>
+</div>
+
+{%- endcase -%}

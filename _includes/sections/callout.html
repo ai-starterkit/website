@@ -1,0 +1,3 @@
+{%- comment -%} A highlighted note to readers, such as a question for the community. {%- endcomment -%}
+{%- assign s = include.s -%}
+<div class="callout" role="note">{% if s.label %}<b class="lbl">{{ s.label | sk_md }}</b>{% endif %}<h3>{{ s.heading | sk_md }}</h3>{{ s.body | sk_md_block }}</div>

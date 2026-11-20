@@ -1,0 +1,34 @@
+{%- comment -%}
+  Teaching & Learning: the interactive framework model, drawn as a triangle plus an improvement loop.
+  Words come from _data/teaching_learning.yml (framework); assets/teaching-learning.js runs it.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign fw = site.data.teaching_learning.framework -%}
+{%- assign spot_x = "50,80,20,50" | split: "," -%}
+{%- assign spot_y = "17.3,70.1,70.1,95" | split: "," -%}
+{%- capture edge %}{{ fw.edge_label | sk_plain | escape }}{% endcapture -%}
+<div class="sec" id="{{ page.anchor_prefix }}{{ s.id }}">{% include sec-head.html s=fw %}
+  <div class="fw" id="fw">
+    <p class="fwhint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.6 14.6a1.5 1.5 0 0 1 2.4-1.8L9 15.5"/></svg>{{ fw.hint | sk_md }}<span class="prog" id="fwprog"></span></p>
+    <div class="fwfig">
+      <svg viewBox="0 0 460 428" aria-hidden="true">
+        <defs><marker id="tlar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+        <circle class="loop" cx="230" cy="212" r="196"/>
+        <path d="M 52 128 A 196 196 0 0 1 120 50" fill="none" stroke="var(--sage)" stroke-width="2" marker-end="url(#tlar)"/>
+        <path d="M 408 296 A 196 196 0 0 1 340 374" fill="none" stroke="var(--sage)" stroke-width="2" marker-end="url(#tlar)"/>
+        <polygon class="tri" points="230,74 368,300 92,300"/>
+        <text class="edge" x="140" y="180" transform="rotate(-58 140 180)">{{ edge }}</text>
+        <text class="edge" x="320" y="180" transform="rotate(58 320 180)">{{ edge }}</text>
+        <text class="edge" x="230" y="318">{{ edge }}</text>
+        <text class="ctr" x="230" y="226">{{ fw.center_label | sk_plain | escape }}</text>
+        <text class="ctr2" x="230" y="246">{{ fw.center_sublabel | sk_plain | escape }}</text>
+      </svg>
+      {% for p in fw.parts limit: 4 -%}
+      {%- assign i = forloop.index0 -%}
+      <button class="node{% if forloop.index == 4 %} loopnode{% endif %}" type="button" style="left:{{ spot_x[i] }}%;top:{{ spot_y[i] }}%" data-node="{{ p.short_name | default: p.name | slugify }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"><small>{{ p.number | sk_plain | escape }}</small>{{ p.name | sk_plain | escape }}</button>
+      {%- endfor %}
+    </div>
+    <div class="fwdetail" id="fwdetail" aria-live="polite"></div>
+  </div>
+  {% if fw.footnote %}<p class="fwnote">{{ fw.footnote | sk_md }}</p>{% endif %}
+</div>

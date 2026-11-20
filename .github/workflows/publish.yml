@@ -1,0 +1,60 @@
+# Publishes the site when a change is merged into main.
+#
+# The built site goes to the gh-pages branch. In the repository's Settings > Pages, set the source
+# to "Deploy from a branch", branch gh-pages, folder / (root). Pull request previews live in the
+# same branch under pr-preview/ (see preview.yml), so publishing leaves that folder alone, and it
+# keeps the CNAME file GitHub writes when the custom domain is set.
+name: Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # Only the AXIM repository publishes; copies elsewhere (forks, the L&A build repository) do not.
+    if: github.repository_owner == 'ai-starterkit'
+    env:
+      JEKYLL_ENV: production
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - uses: ruby/setup-ruby@a5612086821ed5ff914a94f49c9e4e6ee039fb72 # v1.337.0
+        with:
+          bundler-cache: true
+
+      # "" on the custom domain (ai-starterkit.org); "/<repository>" while the site is still served
+      # from ai-starterkit.github.io/<repository>/ before launch.
+      - name: Work out the site's base address
+        id: base
+        run: |
+          url=$(gh api "repos/${{ github.repository }}/pages" --jq .html_url 2>/dev/null || echo "")
+          base=$(printf '%s' "$url" | sed -E 's#^https?://[^/]+##; s#/$##')
+          echo "Pages address: ${url:-not set yet}; base path: '${base}'"
+          echo "path=${base}" >> "$GITHUB_OUTPUT"
+
+      - name: Build the site
+        run: |
+          bundle exec jekyll build --strict_front_matter --baseurl "${{ steps.base.outputs.path }}"
+          touch _site/.nojekyll
+
+      - name: Publish to gh-pages
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
+        with:
+          folder: _site
+          branch: gh-pages
+          clean-exclude: |
+            pr-preview/
+            CNAME
+          force: false

@@ -1,0 +1,39 @@
+{%- comment -%}
+  Topic vote: a card for each option with a vote button, then an "Other" card where visitors write
+  their own topic. "max" caps how many a visitor can pick (0 or blank for no limit). Until a form
+  service is chosen, assets/site.js opens the visitor's email app with their picks filled in,
+  addressed to the contact form's send_to in _data/site.yml.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign opts = s.options | where_exp: "x", "x.show != false" -%}
+{%- assign max = s.max | default: 0 -%}
+<div class="sec vote" id="{{ s.id }}" data-max="{{ max }}" data-to="{{ site.data.site.contact_form.send_to | escape }}" data-subject="{{ s.email_subject | sk_plain | escape }}" data-intro="{{ s.email_intro | sk_plain | escape }}" data-count="{{ s.count_label | sk_plain | escape }}" data-done="{{ s.after_sending | sk_plain | escape }}">
+  {%- include sec-head.html s=s -%}
+  {{ s.body | sk_md_block }}
+  <ul class="vote-grid r3-{{ opts.size | modulo: 3 }} r2-{{ opts.size | modulo: 2 }}">
+  {%- for o in opts %}
+    <li class="vote-card">
+      <span class="vote-num" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+      <h3 id="vote-{{ o.id }}">{{ o.title | sk_md }}</h3>
+      {%- if o.text %}<p>{{ o.text | sk_md }}</p>{% endif %}
+      <button type="button" class="vote-btn" aria-pressed="false" aria-describedby="vote-{{ o.id }}"><span class="off">{{ s.vote_label | sk_md }}</span><span class="on">✓ {{ s.voted_label | sk_md }}</span></button>
+    </li>
+  {%- endfor %}
+    <li class="vote-card vote-other">
+      <div class="vote-other-text">
+        <span class="vote-num" aria-hidden="true">+</span>
+        <h3 id="vote-other">{{ s.other_title | sk_md }}</h3>
+        {%- if s.other_text %}<p>{{ s.other_text | sk_md }}</p>{% endif %}
+      </div>
+      <div class="vote-other-input">
+        <textarea rows="3" aria-labelledby="vote-other" placeholder="{{ s.other_placeholder | sk_plain | escape }}"></textarea>
+        <button type="button" class="vote-btn" aria-pressed="false" aria-describedby="vote-other"><span class="off">{{ s.vote_label | sk_md }}</span><span class="on">✓ {{ s.voted_label | sk_md }}</span></button>
+      </div>
+    </li>
+  </ul>
+  <div class="vote-bar">
+    <p class="vote-count" aria-live="polite"></p>
+    <button type="button" class="btn vote-send" disabled>{{ s.button | sk_md }}</button>
+  </div>
+  <p class="vote-out muted small" aria-live="polite"></p>
+</div>

@@ -1,0 +1,32 @@
+{%- comment -%}
+  Teaching & Learning: task cards with a starter prompt to copy, then the comparison with a general
+  chatbot. Words come from _data/teaching_learning.yml (try_it and comparison).
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- assign tr = site.data.teaching_learning.try_it -%}
+{%- assign cmp = site.data.teaching_learning.comparison -%}
+{%- assign parts = site.data.teaching_learning.framework.parts -%}
+{%- assign companion = tr.companion_link | sk_link -%}
+<div class="sec" id="{{ page.anchor_prefix }}{{ s.id }}">{% include sec-head.html s=tr %}
+  {% if tr.steps.size > 0 %}<p class="howto">{% for st in tr.steps %}<span><b>{{ forloop.index }}</b>{{ st | sk_md }}</span>{% endfor %}</p>{% endif %}
+  <div class="tasks" id="tasks">
+  {%- for t in tr.tasks -%}
+    {%- assign part = parts | where: "short_name", t.part | first -%}
+    {%- if forloop.index > 1 %}
+{% endif -%}
+    <div class="task"><span class="nd">{% if part %}{{ part.number | sk_plain | split: " " | first | escape }} · {{ part.short_name | sk_plain | escape }}{% else %}{{ t.part | sk_md }}{% endif %}</span><p class="im">{{ t.quote | sk_md }}</p><h4>{{ tr.prompt_label | sk_md }}</h4><pre>{{ t.prompt | escape }}</pre>{% if t.you_get %}<p class="get"><b>{{ tr.result_label | sk_md }}</b> {{ t.you_get | sk_md }}</p>{% endif %}<div class="act"><button class="ibtn" type="button" data-copy>{{ tr.copy_button | sk_md }}</button>{% if companion != "" %}<a class="btn" href="{{ companion }}"{{ companion | sk_target }}>{{ tr.open_button | sk_md }}</a>{% endif %}<span class="ok" aria-live="polite"></span></div></div>
+  {%- endfor -%}
+  </div>
+  {% if cmp.tabs.size > 0 %}<details class="diff">
+    <summary>{{ cmp.heading | sk_md }} <span>{{ cmp.summary | sk_md }}</span></summary>
+    <div class="in">
+      <div class="vs-tabs" role="tablist" aria-label="Example requests">{% for tab in cmp.tabs %}<button class="vs-tab" type="button" role="tab" data-vs="{{ forloop.index0 }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ tab.name | sk_plain | escape }}</button>{% endfor %}</div>
+      <div class="vs-prompt"><b>{{ cmp.request_label | sk_md }}</b><span id="vsq"></span></div>
+      <div class="vs">
+        <div class="col"><span class="who">{{ cmp.general_label | sk_md }}</span><div class="resp" id="vsa"></div><p class="why"><b>{{ cmp.missing_label | sk_md }}</b> <span id="vsaw"></span></p></div>
+        <div class="col ours"><span class="who">{{ cmp.companion_label | sk_md }}</span><div class="resp" id="vsb"></div><p class="why"><b>{{ cmp.aligned_label | sk_md }}</b> <span id="vsbw"></span></p></div>
+      </div>
+      {% if cmp.footnote %}<p class="src-note">{{ cmp.footnote | sk_md }}</p>{% endif %}
+    </div>
+  </details>{% endif %}
+</div>

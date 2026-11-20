@@ -1,0 +1,2 @@
+# Added on top of _config.yml for pull request previews: tells search engines not to index them.
+noindex: true
