@@ -1,6 +1,7 @@
 ---
 title: Multiple-choice quality review
 kind: skill
+show: false
 part: Assessment
 order: 5
 description: Checks items against common item-writing flaws.
