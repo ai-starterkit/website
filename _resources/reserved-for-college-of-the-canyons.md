@@ -1,6 +1,7 @@
 ---
 title: Reserved for College of the Canyons
 page: teaching-learning
+show: false
 section: resources
 order: 3
 part_tag: To come
