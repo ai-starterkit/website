@@ -1,6 +1,7 @@
 ---
 title: Stress-test an assignment against AI
 kind: prompt
+show: false
 part: Assessment
 order: 3
 description: Shows whether an assignment still measures learning when students use AI.
