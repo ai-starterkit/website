@@ -1,6 +1,7 @@
 ---
 title: AI Pedagogy and Curriculum Institute, 2026-27
 page: teaching-learning
+show: false
 section: resources
 order: 2
 part_tag: Outcomes · Instruction
